@@ -40,7 +40,7 @@ export const getSubtitles = async (id: string) => {
       return { title: title, subtitle: null };
     }
   }
-  return { title: null, subtitles: null };
+  return { title: null, subtitle: null };
 };
 
 export const getProfile = async () => {
