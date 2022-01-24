@@ -40,7 +40,7 @@ export const AuthLayout = (props: Props) => {
                 <div className="w-full sm:w-96">
                   <Auth
                     supabaseClient={client}
-                    providers={["github"]}
+                    providers={['github','google']}
                     socialColors={true}
                   />
                 </div>

@@ -43,7 +43,7 @@ export const AddSubtitle = (props: Props) => {
       alert("Input ISBN number");
       return;
     }
-    const res = await fetch("https://api.openbd.js/v1/get?isbn=" + isbn);
+    const res = await fetch("https://api.openbd.jp/v1/get?isbn=" + isbn);
     const openbd = await res.json();
     if (openbd[0] == null) {
       alert("Invaild ISBN number. Please check");
