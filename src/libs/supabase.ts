@@ -11,6 +11,14 @@ if (!SUPABASE_KEY) {
 }
 export const client = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+export const getProfile = async () => {
+  const { data, error } = await client.from("profile").select("*");
+  if (!error && data) {
+    return data[0];
+  }
+  return null;
+};
+
 export const getTitles = async () => {
   const { data, error } = await client
     .from("manga_title")
@@ -35,18 +43,10 @@ export const getSubtitles = async (id: string) => {
       .order("volume", { ascending: true })
       .eq("title_id", id));
     if (!error && data) {
-      return { title: title, subtitle: data };
+      return { title: title, subtitles: data };
     } else {
-      return { title: title, subtitle: null };
+      return { title: title, subtitles: null };
     }
   }
-  return { title: null, subtitle: null };
-};
-
-export const getProfile = async () => {
-  const { data, error } = await client.from("profile").select("*");
-  if (!error && data) {
-    return data[0];
-  }
-  return null;
+  return { title: null, subtitles: null };
 };
